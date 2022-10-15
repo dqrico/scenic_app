@@ -62,3 +62,13 @@ def update_rental(id):
 def delete(id):
     Rental.delete(request.form)
     return redirect("/dashboard")
+
+@app.route('/rentals/<int:id>/favorite', methods=['POST'])
+def favorite_rental(id):
+    Rental.favorite(request.form)
+    return redirect("/dashboard")
+
+@app.route('/rentals/<int:id>/unfavorite', methods=['POST'])
+def unfavorit_rental(id):
+    Rental.unfavorite(request.form)
+    return redirect("/dashboard")
