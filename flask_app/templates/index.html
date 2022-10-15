@@ -4,11 +4,47 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-iYQeCzEYFbKjA/T2uDLTpkwGzCiq6soy8tYaI1GyVh/UjpbCx/TYkiZhlZB6+fzT" crossorigin="anonymous">
     <title>Scenic</title>
 </head>
 <body>
-    <h1>Welcome to Scenic</h1>
-    <h2>this is gonna be so cool</h2>
-
+    <h1 class="text-center">Welcome to Scenic</h1>
+    <div class = "d-flex justify-content-around"> 
+        <form action ="/register" method="post" class="col-4 bg-dark p-4 my-5 text-light">
+            <h2>Register</h2>
+            <label for="first_name">First Name:</label>
+            <input type="text" class="form-control" name = "first_name">
+            <label for="last_name">Last Name:</label>
+            <input type="text" class="form-control" name="last_name">
+            <label for="email">Email:</label>
+            <input type="email" class="form-control" name="email">
+            <label for="password">Password:</label>
+            <input type="password" class="form-control" name="password">
+            <label for="confirm">Confirm Password:</label>
+            <input type="password" class="form-control" name="confirm">
+            <input type="submit" value="Register" class="btn btn-success">
+            {%with messages = get_flashed_messages(category_filter=['register'])%}
+                {%if messages%}
+                    {%for message in messages%}
+                        <p>{{message}}</p>
+                    {%endfor%}
+                {%endif%}
+            {%endwith%}
+        </form>
+        <form action="/login" method="post" class="col-4 bg-dark p-4 my-5 text-light">
+            <h2>Login</h2>
+            <label for="email">Email:</label>
+            <input type="email" name ="email" class="form-control">
+            <label for="password">Password:</label>
+            <input type="password" name ="password" class="form-control">
+            {%with messages = get_flashed_messages(category_filter=['login'])%}
+                {%if messages%}
+                    {%for message in messages%}
+                        <p>{{message}}</p>
+                    {%endfor%}
+                {%endif%}
+            {%endwith%}
+            <input type="submit" value="Login" class="btn btn-success">
+        </form>
 </body>
 </html>
