@@ -47,31 +47,88 @@ class Rental:
     
     @classmethod
     def  get_one(cls,data):
-        query = 'SELECT * from rentals JOIN users ON rentals.user_id=users.id WHERE rentals.id = %(id)s;'
+        query = 'SELECT * from rentals JOIN users AS creators ON rentals.user_id=creators.id
+                LEFT JOIN favorited_rentals ON favorited_rentals.rental_id=tentals.id
+                LEFT JOIN users AS users_who_favorited ON favorited_rentals.user_id=users_who_favorited.id
+                WHERE rentals.id=%(id)s;'
         results = connectToMySQL(cls.db_name).query_db(query,data)
-        if len(results) < 1:
+         if len(results)<1:
             return False
-        row = results[0]
-        rental = cls(row)
-        user_data = {
-                "id":row['users.id'],
-                "first_name":row['first_name'], 
-                "last_name":row['last_name'], 
-                "email":row['email'], 
-                "password":row['password'], 
-                "created_at":row['users.created_at'],
-                "updated_at":row['users.updated_at']
-            }
+        new_park=True
+        for row in results:
+            if new_rental:
+                park= cls(row)
+                user_data ={
+                    'id' : row['creators.id'],
+                    'first_name':row['first_name'],
+                    'last_name':row['last_name'],
+                    'email':row['email'],
+                    'password':row['password'],
+                    'created_at':row['creators.created_at'],
+                    'updated_at':row['creators.updated_at']
+                }
+                creator= User(user_data)
+                rental.creator = creator
+                new_rental= False
+            if row['users_who_favorited.id']:
+                user_who_favorited_data={
+                    'id' : row['users_who_favorited.id'],
+                    'first_name': row['users_who_favorited.first_name'],
+                    'last_name': row['users_who_favorited.last_name'],
+                    'email': row['users_who_favorited.email'],
+                    'password': row['users_who_favorited.password'],
+                    'created_at': row['users_who_favorited.created_at'],
+                    'updated_at': row['users_who_favorited.updated_at']
+                }
+                user_who_favorited = User(user_who_favorited_data)
+                rental.users_who_favorited.append(user_who_favorited)
+                rental.user_ids_who_favorited.append(row['users_who_favorited.id'])
         return rental
 
     @classmethod
-    def get_all_for_users(cls,data):
-        query ='SELECT * from rentals JOIN users ON rentals.user_id=users.id WHERE rentals.user_id= %(id)s;'
-        print(query)
-        results = connectToMySQL(cls.db_name).query_db(query,data)
-        if not results and len(results) < 1:
-            return False
-        return results
+    def get_all(cls):
+        query ='''SELECT * FROM rentals JOIN users AS creators ON rentals.user_id = creators.id
+            LEFT JOIN favorited_rentals ON rentals.id = favorited_rentals.rental_id
+            LEFT JOIN users AS users_who_favorited ON favorited_rentals.user_id = users_who_favorited.id;'''
+        results =connectToMySQL(cls.db_name).query_db(query)
+        rentals=[]
+        for row in results:
+            new_rental = True
+            user_who_favorited_data = {
+                'id' : row['users_who_favorited.id'],
+                'first_name':row['users_who_favorited.first_name'],
+                'last_name':row['users_who_favorited.last_name'],
+                'email':row['users_who_favorited.email'],
+                'password':row['users_who_favorited.password'],
+                'created_at':row['users_who_favorited.created_at'],
+                'updated_at':row['users_who_favorited.updated_at']
+            }
+            number_of_rentals=len(rentals)
+            if number_of_rentals > 0:
+                last_rental=rentals[number_of_rentals-1]
+                if last_rental.id == row['id']:
+                    last_rental.user_ids_who_favorited.append(row['users_who_favorited.id'])
+                    last_rental.users_who_favorited.append(User(user_who_favorited_data))
+                    new_rental = False
+
+            if new_rental:
+                rental = cls(row)
+                user_data ={
+                    'id' : row['creators.id'],
+                    'first_name':row['first_name'],
+                    'last_name':row['last_name'],
+                    'email':row['email'],
+                    'password':row['password'],
+                    'created_at':row['creators.created_at'],
+                    'updated_at':row['creators.updated_at']
+                }
+                user = User(user_data)
+                rental.user = user
+                if row['users_who_favorited.id']:
+                    rental.user_ids_who_favorited.append(row['users_who_favorited.id'])
+                    rental.users_who_favorited.append(User(user_who_favorited_data))
+                rentals.append(rental)
+        return rentals
 
     @classmethod
     def update(cls, data):
