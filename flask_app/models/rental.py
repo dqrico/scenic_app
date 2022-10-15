@@ -1,6 +1,6 @@
 from flask_app.config.mysqlconnection import connectToMySQL
 from flask import flash
-from flask_app.models import user
+from flask_app.models.user import User
 
 class Rental:
     db_name = 'scenic_app'
@@ -47,12 +47,13 @@ class Rental:
     
     @classmethod
     def  get_one(cls,data):
-        query = 'SELECT * from rentals JOIN users AS creators ON rentals.user_id=creators.id
+        query = '''
+                SELECT * from rentals JOIN users AS creators ON rentals.user_id=creators.id
                 LEFT JOIN favorited_rentals ON favorited_rentals.rental_id=tentals.id
                 LEFT JOIN users AS users_who_favorited ON favorited_rentals.user_id=users_who_favorited.id
-                WHERE rentals.id=%(id)s;'
+                WHERE rentals.id=%(id)s;'''
         results = connectToMySQL(cls.db_name).query_db(query,data)
-         if len(results)<1:
+        if len(results)<1:
             return False
         new_park=True
         for row in results:
@@ -68,7 +69,7 @@ class Rental:
                     'updated_at':row['creators.updated_at']
                 }
                 creator= User(user_data)
-                rental.creator = creator
+                Rental.creator = creator
                 new_rental= False
             if row['users_who_favorited.id']:
                 user_who_favorited_data={
@@ -81,9 +82,9 @@ class Rental:
                     'updated_at': row['users_who_favorited.updated_at']
                 }
                 user_who_favorited = User(user_who_favorited_data)
-                rental.users_who_favorited.append(user_who_favorited)
-                rental.user_ids_who_favorited.append(row['users_who_favorited.id'])
-        return rental
+                Rental.users_who_favorited.append(user_who_favorited)
+                Rental.user_ids_who_favorited.append(row['users_who_favorited.id'])
+        return Rental
 
     @classmethod
     def get_all(cls):

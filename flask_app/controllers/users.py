@@ -6,13 +6,13 @@ bcrypt=Bcrypt(app)
 
 @app.route("/")
 def log_and_reg():
-    return render_template("log_and_reg.html")
+    return render_template("index.html")
 
 @app.route("/login",methods=['POST'])
 def login():
     if not User.validate_login(request.form):
         return redirect("/")
-    user =User.get_user_by_email(request.form)
+    user = User.get_user_by_email(request.form)
     if user:
         if not bcrypt.check_password_hash(user.password, request.form["password"]):
             flash("email/password combination is inccorect")
