@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-iYQeCzEYFbKjA/T2uDLTpkwGzCiq6soy8tYaI1GyVh/UjpbCx/TYkiZhlZB6+fzT" crossorigin="anonymous">
+    <title>Create</title>
+</head>
+<body>
+    <h1 class="text-center mb-4">Create your SCENIC rental!</h1>
+    <div class="main">
+        <div class="row">
+            <div class="form">
+                <div class="input-group mb-3">
+                    <span class="input-group-text" id="basic-addon1"></span>
+                    <input type="text" name="name" class="form-control" placeholder="Name of your rental" aria-describedby="basic-addon1">
+                </div>
+                <div class="input-group mb-3">
+                    <span class="input-group-text"></span>
+                    <textarea class="form-control" name="description" placeholder="Describe your rental"></textarea>
+                </div>
+                <div class="form-group row">
+                    <div class="col-xs-3">
+                    <input class="form-control" name ="city"placeholder="City" type="text">
+                    </div>
+                    <div class="col-xs-3">
+                    <select class="form-select" name="state" type="text">
+                        <option selected>Select State</option>
+                        <option value="1">CO</option>
+                        <option value="2">CA</option>
+                        <option value="3">WA</option>
+                    </div>
+                </div>
+                <div class="input-group mb-3">
+                    <span class="input-group-text">$</span>
+                    <input type="text" name="rate" class="form-control" placeholder="Rate">
+                    <span class="input-group-text">per night</span>
+                </div>
+                <div class="col-xs-2">
+                    <input class="form-control" name ="beds" placeholder="# of beds" type="text">
+                </div>
+                <div class="input-group mb-3">
+                    <span class="input-group-text" id="basic-addon1"></span>
+                    <input type="text" name="amenity1" class="form-control" placeholder="Amenities" aria-describedby="basic-addon1">
+                </div>
+                <div class="input-group mb-3">
+                    <span class="input-group-text" id="basic-addon1"></span>
+                    <input type="text" name="amenity2" class="form-control" placeholder="Amenities" aria-describedby="basic-addon1">
+                </div>
+                <div class="input-group mb-3">
+                    <input type="file" class="form-control" name="image" id="inputGroupFile02">
+                    <label class="input-group-text" for="inputGroupFile02">Upload</label>
+                </div>
+                <input type="submit" value="Create" class="btn btn-success">
+            </div>
+    </div>
+</body>
+</html>
