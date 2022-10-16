@@ -1,6 +1,5 @@
 import pymysql.cursors # a cursor is the object we use to interact with the database
 
-# TEST - GIT CLONE
 
 # this class will give us an instance of a connection to our database
 class MySQLConnection:
@@ -8,7 +7,7 @@ class MySQLConnection:
         # change the user and password as needed
         connection = pymysql.connect(host = 'localhost',
                                     user = 'root', 
-                                    password = 'PASSWORD', 
+                                    password = 'swift1', 
                                     db = db,
                                     charset = 'utf8mb4',
                                     cursorclass = pymysql.cursors.DictCursor,
