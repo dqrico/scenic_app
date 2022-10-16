@@ -4,7 +4,7 @@ from flask_app.models.user import User
 
 
 class Rental:
-    db_name="rentals"
+    db_name="scenic_app"
 
     def __init__(self,data):
         self.id=data['id']
