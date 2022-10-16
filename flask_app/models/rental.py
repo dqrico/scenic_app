@@ -30,24 +30,6 @@ class Rental:
         query = "INSERT INTO rentals (name, description, city, state, rate, beds, amenity_1, amenity_2, image, user_id) VALUES (%(name)s,%(description)s,%(city)s,%(state)s,%(rate)s,%(beds)s,%(amenity_1)s,%(amenity_2)s,%(iamge)s,%(user_id)s);"
         return connectToMySQL(cls.db_name).query_db(query, data)
 
-    @classmethod
-    def get_all(cls):
-        query =  "SELECT * FROM rentals JOIN users ON rentals.user_id=users.id;"
-        results =  connectToMySQL(cls.db_name).query_db(query)
-        rentals = []
-        for row in results:
-            rental = cls(row)
-            user_data = {
-                "id":row['users.id'],
-                "first_name":row['first_name'], 
-                "last_name":row['last_name'], 
-                "email":row['email'], 
-                "password":row['password'], 
-                "created_at":row['users.created_at'],
-                "updated_at":row['users.updated_at']
-            }
-            rentals.append(rental)
-        return rentals
     
     @classmethod
     def get_all(cls):
