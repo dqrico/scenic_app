@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='style.css') }}">
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/style.css') }}">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-iYQeCzEYFbKjA/T2uDLTpkwGzCiq6soy8tYaI1GyVh/UjpbCx/TYkiZhlZB6+fzT" crossorigin="anonymous">
     <title>Dashboard</title>
 </head>
@@ -13,29 +13,59 @@
         <div class="row mb-4">
             <div class="col-md-4"><h1>Dashboard</h1></div>
             <div class="col-md-4 offset-md-3">
-                <button>Create</button>
-                <button>Logout</button>
+                <a href="/rentals/create" class="btn btn-info" role="button">Create</a>
+                <a href="#" class="btn btn-info" role="button">Update</a>
             </div>
         </div>
         <div class="top d-flex justify-content-around mb-4">
-            <img src="..." class="rounded float-start" alt="...">
-            <img src="..." class="rounded text-center" alt="...">
-            <img src="..." class="rounded float-end" alt="...">
+            <img src="{{ url_for('static', filename='img/home2.jpg') }}" class="rounded float-start" alt="home2">
+            <img src="{{ url_for('static', filename='img/home3.jpg') }}" class="rounded float-center" alt="home3">
+            <img src="{{ url_for('static', filename='img/home4.jpg') }}" class="rounded float-end" alt="home4">
         </div>
-        <div class="icons d-flex justify-content-around">
-            <p>Icons Here</p>
-            <p>Icons Here</p>
-            <p>Icons Here</p>
+        <div class="alley">
+            <div class="etall">
+                <img src="{{ url_for('static', filename='img/mapmarker.png') }}" class="icon" alt="mapmarker"><p class = "info">rental.city</p>
+                <img src="{{ url_for('static', filename='img/book.png') }}" class="icon" alt="book"><p class = "info">rental.user</p>
+                <img src="{{ url_for('static', filename='img/bed.png') }}" class="icon" alt="bed"><p class = "info">rental.beds</p>
+                <img src="{{ url_for('static', filename='img/heart.png') }}" class="icon" alt="heart"><p class = "info">rental.favorite</p>
+            </div>
+            <div class="etall">
+                <img src="{{ url_for('static', filename='img/mapmarker.png') }}" class="icon" alt="mapmarker"><p class = "info">rental.city</p>
+                <img src="{{ url_for('static', filename='img/book.png') }}" class="icon" alt="book"><p class = "info">rental.user</p>
+                <img src="{{ url_for('static', filename='img/bed.png') }}" class="icon" alt="bed"><p class = "info">rental.beds</p>
+                <img src="{{ url_for('static', filename='img/heart.png') }}" class="icon" alt="heart"><p class = "info">rental.favorite</p>
+            </div>
+            <div class="etall">
+                <img src="{{ url_for('static', filename='img/mapmarker.png') }}" class="icon" alt="mapmarker"><p class = "info">rental.city</p>
+                <img src="{{ url_for('static', filename='img/book.png') }}" class="icon" alt="book"><p class = "info">rental.user</p>
+                <img src="{{ url_for('static', filename='img/bed.png') }}" class="icon" alt="bed"><p class = "info">rental.beds</p>
+                <img src="{{ url_for('static', filename='img/heart.png') }}" class="icon" alt="heart"><p class = "info">rental.favorite</p>
+            </div>
         </div>
         <div class="bottom d-flex justify-content-around mb-4">
-            <img src="..." class="rounded float-start" alt="...">
-            <img src="..." class="rounded text-center" alt="...">
-            <img src="..." class="rounded float-end" alt="...">
+            <img src="{{ url_for('static', filename='img/home5.jpg') }}" class="rounded float-start" alt="home5">
+            <img src="{{ url_for('static', filename='img/home6.jpg') }}" class="rounded float-center" alt="home6">
+            <img src="{{ url_for('static', filename='img/home7.jpg') }}" class="rounded float-end" alt="home7">
         </div>
-        <div class="icons d-flex justify-content-around">
-            <p>Icons Here</p>
-            <p>Icons Here</p>
-            <p>Icons Here</p>
+        <div class="alley">
+            <div class="etall">
+                <img src="{{ url_for('static', filename='img/mapmarker.png') }}" class="icon" alt="mapmarker"><p class = "info">rental.city</p>
+                <img src="{{ url_for('static', filename='img/book.png') }}" class="icon" alt="book"><p class = "info">rental.user</p>
+                <img src="{{ url_for('static', filename='img/bed.png') }}" class="icon" alt="bed"><p class = "info">rental.beds</p>
+                <img src="{{ url_for('static', filename='img/heart.png') }}" class="icon" alt="heart"><p class = "info">rental.favorite</p>
+            </div>
+            <div class="etall">
+                <img src="{{ url_for('static', filename='img/mapmarker.png') }}" class="icon" alt="mapmarker"><p class = "info">rental.city</p>
+                <img src="{{ url_for('static', filename='img/book.png') }}" class="icon" alt="book"><p class = "info">rental.user</p>
+                <img src="{{ url_for('static', filename='img/bed.png') }}" class="icon" alt="bed"><p class = "info">rental.beds</p>
+                <img src="{{ url_for('static', filename='img/heart.png') }}" class="icon" alt="heart"><p class = "info">rental.favorite</p>
+            </div>
+            <div class="etall">
+                <img src="{{ url_for('static', filename='img/mapmarker.png') }}" class="icon" alt="mapmarker"><p class = "info">rental.city</p>
+                <img src="{{ url_for('static', filename='img/book.png') }}" class="icon" alt="book"><p class = "info">rental.user</p>
+                <img src="{{ url_for('static', filename='img/bed.png') }}" class="icon" alt="bed"><p class = "info">rental.beds</p>
+                <img src="{{ url_for('static', filename='img/heart.png') }}" class="icon" alt="heart"><p class = "info">rental.favorite</p>
+            </div>
         </div>
     </div>
 </body>
