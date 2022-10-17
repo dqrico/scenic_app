@@ -21,7 +21,7 @@ def new_rental_form():
         'id': session['user_id']
     }
     user= User.get_user_by_id(user_data)
-    return render_template("create_rentals.html",user=user)
+    return render_template("createOne.html",user=user)
     
 @app.route("/rentals/create",methods=['POST'])
 def create_rental():

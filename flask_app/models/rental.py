@@ -115,7 +115,7 @@ class Rental:
 
     @classmethod
     def create(cls,data):
-        query = "INSERT INTO rentals(name,description,city,state,rate,beds,amenity_1,amenity_2,user_id) VALUES(%(name)s,%(description)s,%(city)s,%(state)s,%(rate)s,%(beds)s,%(amenity_1)s,%(amenity_2)s,%(user_id)s);"
+        query = "INSERT INTO rentals(name,description,city,state,rate,beds,amenity_1,amenity_2,image,user_id) VALUES(%(name)s,%(description)s,%(city)s,%(state)s,%(rate)s,%(beds)s,%(amenity_1)s,%(amenity_2)s,%(image)s,%(user_id)s);"
         return connectToMySQL(cls.db_name).query_db(query,data)
 
 
