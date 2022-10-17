@@ -1,0 +1,21 @@
+.icon{
+    width: 20px;
+    height: 20px;
+}
+
+.alley{
+    display: flex;
+    justify-content: space-around;
+    flex: 3;
+}
+
+.etall{
+    border: 1px solid black;
+    margin-bottom: 10px;
+    display: flex;
+    flex-direction: row;
+}
+
+.info{
+    font-size: x-small;
+}
