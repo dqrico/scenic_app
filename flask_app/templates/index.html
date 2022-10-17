@@ -21,7 +21,7 @@
             <label for="password">Password:</label>
             <input type="password" class="form-control" name="password">
             <label for="confirm">Confirm Password:</label>
-            <input type="password" class="form-control" name="confirm">
+            <input type="password" class="form-control" name="confirm_password">
             <input type="submit" value="Register" class="btn btn-success">
             {%with messages = get_flashed_messages(category_filter=['register'])%}
                 {%if messages%}
