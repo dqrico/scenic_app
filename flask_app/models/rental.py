@@ -28,7 +28,7 @@ class Rental:
     
     @classmethod
     def get_all(cls):
-        query ='''SELECT * FROM rentas JOIN users AS creators ON rentals.user_id = creators.id
+        query ='''SELECT * FROM rentals JOIN users AS creators ON rentals.user_id = creators.id
             LEFT JOIN favorited_rentals ON rentals.id = favorited_rentals.rental_id
             LEFT JOIN users AS users_who_favorited ON favorited_rentals.user_id = users_who_favorited.id;'''
         results =connectToMySQL(cls.db_name).query_db(query)
