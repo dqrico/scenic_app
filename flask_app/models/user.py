@@ -50,13 +50,13 @@ class User:
             flash('email is associated with anothe account')
             is_valid=False
         if len(user['first_name'])<2:
-            flash('first name must be at least 3 characters','error')
+            flash('first name must be at least 3 characters','register')
             is_valid=False
         if len(user['last_name'])<2:
-            flash("last name must be at least 2 characters","error")
+            flash("last name must be at least 2 characters","register")
             is_valid=False
         if len(user['password'])<8:
-            flash("password must be at least 8 characters","error")
+            flash("password must be at least 8 characters","register")
             is_valid= False
         if user['password']!=user['confirm_password']:
             flash("password must match","error")
@@ -74,9 +74,9 @@ class User:
             flash("email is not associated with an account")
             is_valid=False
         if not EMAIL_REGEX.match(user['email']):
-            flash("invalid email address!",'error')
+            flash("invalid email address!",'login')
             is_valid=False
         if len(user['password'])<8:
-            flash("password must be at least 8 characters","error")
+            flash("password must be at least 8 characters","login")
             is_valid= False
         return is_valid
