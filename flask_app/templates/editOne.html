@@ -18,18 +18,18 @@
                 <input name='user_id' type="hidden" value="{{user.id}}">
                 
                 <div class="input-group mb-3">
-                    <input type="text" name="name" class="form-control" placeholder="Name of your rental" aria-describedby="basic-addon1">
+                    <input type="text" name="name" class="form-control" value="{{rental.name}}" aria-describedby="basic-addon1">
                 </div>
                 <div class="input-group mb-3">
-                    <textarea class="form-control" name="description" placeholder="Describe your rental"></textarea>
+                    <textarea class="form-control" name="description" value="{{rental.description}}"></textarea>
                 </div>
                 <div class="row g-3 mb-3">
                     <div class="col-sm-8">
-                    <input class="form-control" name="city"placeholder="City" type="text">
+                    <input class="form-control" name="city" value="{{rental.city}}" type="text">
                     </div>
                     <div class="col-sm">
                     <select class="form-select" name="state" type="text">
-                        <option selected>Select State</option>
+                        <option selected>{{rental.state}}</option>
                         <option value=1>AL</option>
                         <option value=2>AK</option>
                         <option value=3>AZ</option>
@@ -89,20 +89,20 @@
                 </div>
                     <div class="input-group mb-3">
                         <span class="input-group-text">$</span>
-                        <input type="text" name="rate"class="form-control">
+                        <input type="text" name="rate"class="form-control" value="{{rental.rate}}">
                         <span class="input-group-text">per night</span>
                     </div>
                 <div class="col-sm-4">
-                    <input class="form-control" name ="beds" placeholder="# of beds" type="text">
+                    <input class="form-control" name ="beds" value="{{rental.beds}}" type="text">
                 </div>
                 <div class="input-group mb-3">
-                    <input type="text" name="amenity_1" class="form-control" placeholder="Amenities i.e., Kitchen, Pool" aria-describedby="basic-addon1">
+                    <input type="text" name="amenity_1" class="form-control" value="{{rental.amenity_1}}" aria-describedby="basic-addon1">
                 </div>
                 <div class="input-group mb-3">
-                    <input type="text" name="amenity_2" class="form-control" placeholder="Amenities i.e., Kitchen, Pool" aria-describedby="basic-addon1">
+                    <input type="text" name="amenity_2" class="form-control" value="{{rental.amenity_2}}" aria-describedby="basic-addon1">
                 </div>
                 <div class="input-group mb-3">
-                    <input type="text" class="form-control" name="image" placeholder="Add an image" id="inputGroupFile02">
+                    <input type="text" class="form-control" name="image"  id="inputGroupFile02">
                 </div>
                 <input type="submit" value="Update" class="btn btn-success">
             </form>
