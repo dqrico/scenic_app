@@ -41,7 +41,7 @@ def show_rental(id):
 
     }
     rental= Rental.get_one(rental_data)
-    return render_template('show_rental.html',rental=rental, user=user )
+    return render_template('viewOne.html',rental=rental, user=user )
 
 @app.route("/edit/<int:id>")
 def show_edit_form(id):
