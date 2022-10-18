@@ -37,7 +37,7 @@ def register():
     }
     user_id=User.register_user(register_data)
     session['user_id']=user_id
-    flash("registeration was successful")
+    flash("registration was successful")
     return redirect("/dashboard")
 
 
