@@ -53,7 +53,7 @@ def show_edit_form(id):
         'id':id
     }
     rental = Rental.get_one(rental_data)
-    return render_template("edit_rental.html",user=user,rental=rental)
+    return render_template("editOne.html",user=user,rental=rental)
 
 @app.route("/rentals/<int:id>/update", methods=['POST'])
 def update_rental(id):
