@@ -14,20 +14,20 @@
             <div class="col-md-4"><h1>Dashboard</h1></div>
             <div class="col-md-4 offset-md-3">
                 <a href="/rentals/new" class="btn btn-info" role="button">Create</a>
-                <a href="#" class="btn btn-info" role="button">Update</a>
+                <a href="/edit/{{user.id}}" class="btn btn-info" role="button">Update</a>
             </div>
         </div>
         <div class="top d-flex justify-content-around mb-4">
-            <img src="{{ url_for('static', filename='img/home2.jpg') }}" class="rounded float-start" alt="home2">
+            <img src="{{ rental.image }}" class="rounded float-start" alt="...">
             <img src="{{ url_for('static', filename='img/home3.jpg') }}" class="rounded float-center" alt="home3">
             <img src="{{ url_for('static', filename='img/home4.jpg') }}" class="rounded float-end" alt="home4">
         </div>
         <div class="alley">
             <div class="etall">
-                <img src="{{ url_for('static', filename='img/mapmarker.png') }}" class="icon" alt="mapmarker"><p class = "info">rental.city</p>
-                <img src="{{ url_for('static', filename='img/book.png') }}" class="icon" alt="book"><p class = "info">rental.user</p>
-                <img src="{{ url_for('static', filename='img/bed.png') }}" class="icon" alt="bed"><p class = "info">rental.beds</p>
-                <img src="{{ url_for('static', filename='img/heart.png') }}" class="icon" alt="heart"><p class = "info">rental.favorite</p>
+                <img src="{{ url_for('static', filename='img/mapmarker.png') }}" class="icon" alt="mapmarker"><p class = "info">{{rental.city}}</p>
+                <img src="{{ url_for('static', filename='img/book.png') }}" class="icon" alt="book"><p class = "info">{{rental.user}}</p>
+                <img src="{{ url_for('static', filename='img/bed.png') }}" class="icon" alt="bed"><p class = "info">{{rental.beds}}</p>
+                <img src="{{ url_for('static', filename='img/heart.png') }}" class="icon" alt="heart"><p class = "info"></p>
             </div>
             <div class="etall">
                 <img src="{{ url_for('static', filename='img/mapmarker.png') }}" class="icon" alt="mapmarker"><p class = "info">rental.city</p>
