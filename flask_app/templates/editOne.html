@@ -12,6 +12,11 @@
     <div class="container text-center col-md-4">
         <div class="row">
             <div class="form">
+
+                <form action="/rentals/{{rental.id}}/update" method="post">
+                
+                <input name='user_id' type="hidden" value="{{user.id}}">
+                
                 <div class="input-group mb-3">
                     <input type="text" name="name" class="form-control" placeholder="Name of your rental" aria-describedby="basic-addon1">
                 </div>
@@ -24,7 +29,7 @@
                     </div>
                     <div class="col-sm">
                     <select class="form-select" name="state" type="text">
-                        <option selected>State</option>
+                        <option selected>Select State</option>
                         <option value=1>AL</option>
                         <option value=2>AK</option>
                         <option value=3>AZ</option>
@@ -97,9 +102,10 @@
                     <input type="text" name="amenity_2" class="form-control" placeholder="Amenities i.e., Kitchen, Pool" aria-describedby="basic-addon1">
                 </div>
                 <div class="input-group mb-3">
-                    <input type="text" class="form-control" name="image" id="inputGroupFile02" placeholder="Image"> 
+                    <input type="text" class="form-control" name="image" placeholder="Add an image" id="inputGroupFile02">
                 </div>
                 <input type="submit" value="Update" class="btn btn-success">
+            </form>
             </div>
         </div>
     </div>
