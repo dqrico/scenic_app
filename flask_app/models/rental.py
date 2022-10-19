@@ -159,23 +159,23 @@ class Rental:
         if len(rental['description'])<3:
             is_valid = False
             flash("description must be greater then 2")
-        if len(rental['city'])<3:
-            is_valid = False
-            flash("city must be greater then 2")
-        if len(rental['state'])<1:
-            is_valid = False
-            flash("state is required")
-        if len(rental['rate'])<3:
-            is_valid = False
-            flash("rate must be greater then 2")
-        if len(rental['beds'])<0:
-            is_valid = False
-            flash("number of beds is required")
-        if len(rental['amenity_1'])<3:
-            is_valid = False
-            flash("amenity_1 must be greater then 2")
-        if len(rental['amenity_2'])<3:
-            is_valid = False
-            flash("amenity_2 must be greater then 2")
+        # if len(rental['city'])<3:
+        #     is_valid = False
+        #     flash("city must be greater then 2")
+        # # if len(rental['state'])<1:
+        # #     is_valid = False
+        # #     flash("state is required")
+        # # if len(rental['rate'])<3:
+        # #     is_valid = False
+        # #     flash("rate must be greater then 2")
+        # if len(rental['beds'])<0:
+        #     is_valid = False
+        #     flash("number of beds is required")
+        # if len(rental['amenity_1'])<3:
+        #     is_valid = False
+        #     flash("amenity_1 must be greater then 2")
+        # if len(rental['amenity_2'])<3:
+        #     is_valid = False
+        #     flash("amenity_2 must be greater then 2")
         return is_valid
     
