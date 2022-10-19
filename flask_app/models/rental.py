@@ -168,9 +168,9 @@ class Rental:
         if len(rental['rate'])<3:
             is_valid = False
             flash("rate must be greater then 2")
-        # if len(rental['beds'])<0:
-        #     is_valid = False
-        #     flash("number of beds is required")
+        if len(rental['beds'])<0:
+            is_valid = False
+            flash("number of beds is required")
         if len(rental['amenity_1'])<3:
             is_valid = False
             flash("amenity_1 must be greater then 2")
@@ -178,3 +178,4 @@ class Rental:
             is_valid = False
             flash("amenity_2 must be greater then 2")
         return is_valid
+    
