@@ -38,7 +38,10 @@
                     <p>amenity: {{rental.amenity_1}} amenity2: {{rental.amenity_2}}</p>
                 </div>
                 <div class="btn-box col-md-4 offset-md-4">
-                    <button>Book Now</button>
+                    <form action="/rentals/{{rental.id}}/delete" method="POST">
+                        <input type="hidden" name="id" value="{{rental.id}}">
+                        <button type="submit" class="btn btn-danger rounded">Book Now</button>
+                    </form>
                 </div>
             </div>
         </div>
