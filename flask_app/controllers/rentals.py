@@ -12,8 +12,10 @@ def user_dashboard():
         'id':session['user_id']
     }
     user=User.get_user_by_id(user_data)
-    rentals=Rental.get_all()
-    return render_template("dashboard.html", user=user,rentals=rentals)
+    # rentals=Rental.get_all()
+    rental = Rental.get_rentals()
+    # return render_template("dashboard.html", user=user,rentals=rentals, rental=rental)
+    return render_template("dashboard.html", user=user, rental=rental)
 
 @app.route("/rentals/new")
 def new_rental_form():
