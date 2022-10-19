@@ -132,7 +132,7 @@ class Rental:
 
     @classmethod
     def update(cls,data):
-        query = "UPDATE rentals SET name=%(name)s, description=%(description)s, city=%(city)s, state=%(state)s,rate=%(rate)s;beds=%(beds)s,amenity_1=%(amenity_1)s,amenity_2=%(amenity_2)s,image=%(image)s WHERE id=%(id)s;"
+        query = "UPDATE rentals SET name=%(name)s, description=%(description)s, city=%(city)s, state=%(state)s,rate=%(rate)s,beds=%(beds)s,amenity_1=%(amenity_1)s,amenity_2=%(amenity_2)s,image=%(image)s WHERE id=%(id)s;"
         return connectToMySQL(cls.db_name).query_db(query,data)
 
     @classmethod

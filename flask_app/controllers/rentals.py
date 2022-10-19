@@ -59,6 +59,16 @@ def show_edit_form(id):
 
 @app.route("/rentals/<int:id>/update", methods=['POST'])
 def update_rental(id):
+    # Rental.update(request.form)
+    # return redirect('/dashboard')
+
+    data = {
+        "id":id
+    }
+    user_data = {
+        "id":session['user_id']
+    }
+    print(request.form)
     Rental.update(request.form)
     return redirect('/dashboard')
 
