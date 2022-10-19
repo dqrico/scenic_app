@@ -10,24 +10,32 @@
 </head>
 <body>
     <div class="container text-center">
+
         <div class="row mb-4">
-            <div class="col-md-4"><h1>Rental.Name</h1></div>
+            <div class="col-md-4"><h1>{{rental.name}}</h1></div>
             <div class="col-md-4 offset-md-3">
                 <button>Update</button>
             </div>
         </div>
+
         <div class="main" style="height: 500px; width:auto">
             <div class="image col-6">
-            <img class="mw-50" src="./static/img/home1.jpg" alt="home1" >
+            <img class="mw-50" src="{{rental.image}}" alt="home1" >
             </div>
+
             <div class="details">
-                <p>Here are some details</p>
+                <p>Desc: {{rental.description}}</p>
+                <p>City: {{rental.city}}, State: {{rental.state}}</p>
+                <p>Rate: {{rental.rate}} Beds: {{rental.rate}}</p>
+                <p>{{rental.user_id}}</p>
             </div>
+
         </div>
         <div class="bot text-center">
             <div class="row">
                 <div class="amenities col-md-4">
                     <p>Here are the amenities</p>
+                    <p>amenity: {{rental.amenity_1}} amenity2: {{rental.amenity_2}}</p>
                 </div>
                 <div class="btn-box col-md-4 offset-md-4">
                     <button>Book Now</button>
