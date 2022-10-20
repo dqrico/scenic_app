@@ -93,3 +93,5 @@ def favorite_rental(id):
 def unfavorit_rental(id):
     Rental.unfavorite(request.form)
     return redirect("/dashboard")
+
+

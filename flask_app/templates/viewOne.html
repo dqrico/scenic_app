@@ -4,21 +4,38 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='style.css') }}">
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/style.css') }}">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-iYQeCzEYFbKjA/T2uDLTpkwGzCiq6soy8tYaI1GyVh/UjpbCx/TYkiZhlZB6+fzT" crossorigin="anonymous">
     <title>View One</title>
 </head>
 <body>
     <div class="container text-center">
 
-        <div class="row mb-4">
+        <!-- <div class="row mb-4">
             <div class="col-md-4"><h1>{{rental.name}}</h1></div>
             <div class="col-md-4 offset-md-3">
                 <a href="/edit/{{rental.id}}" class="btn btn-info" role="button">Update</a>
             </div>
-        </div>
+        </div> -->
 
-        <div class="main" style="height: 500px; width:auto">
+        <nav class="navbar navbar-expand-sm bg-secondary navbar-dark">
+            <div class="container">
+                <div class="text-white text-center">
+                    <h1>Edit {{rental.name}}</h1>
+                </div>
+                <ul class="navbar-nav ml-auto">
+                    <li class="nav-item">
+                        <a class="nav-link text-white" href="/dashboard">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link text-white" href="/edit/{{rental.id}}">Update</a>
+                    </li>
+                </ul>
+            </div>
+        </nav>
+
+
+        <!-- <div class="main" style="height: 500px; width:auto">
             <div class="image col-6">
             <img class="mw-50" src="{{rental.image}}" alt="home1" >
             </div>
@@ -45,6 +62,39 @@
                 </div>
             </div>
         </div>
+    </div> -->
+
+    <div class="display">
+        <div class="img">
+            <div class="image col-6"><img src="{{rental.image}}" alt="{{rental.name}}" ></div>
+
+            <div class="details">
+                <p><strong>Description</strong>: {{rental.description}}</p>
+                <p><strong>Location</strong>: {{rental.city}}, {{rental.state}}</p>
+                <p><strong>Rate</strong>: ${{rental.rate}} per night </p>
+                <p><strong>Beds</strong>: {{rental.beds}}</p>
+            </div>
+        </div>
+        </div>
+        <div class="bot">
+            <div class="row">
+                <div class="amenities">
+                    <h4>Amenities:</h4>
+                    <ul>
+                        <li>{{rental.amenity_1}} </li>
+                        <li>{{rental.amenity_2}}</li>
+                    </ul>
+                </div>
+                <div class="btn-box col-md-4 offset-md-6">
+                    <form action="/rentals/{{rental.id}}/delete" method="POST">
+                        <input type="hidden" name="id" value="{{rental.id}}">
+                        <button type="submit" class="btn btn-danger rounded">Book Now</button>
+                    </form>
+                </div>
+            </div>
+        </div>
     </div>
+
+
 </body>
 </html>

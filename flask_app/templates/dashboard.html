@@ -11,21 +11,49 @@
 <body>
     <div class="container text-center">
         <div class="row mb-4">
-            <div class="col-md-4"><h1>Dashboard</h1></div>
-            <div class="col-md-4 offset-md-3">
-                <a href="/rentals/new" class="btn btn-info" role="button">Create</a>
-                <a href="/edit/{{user.id}}" class="btn btn-info" role="button">Update</a>
-            </div>
+            <nav class="navbar navbar-expand-sm bg-secondary navbar-dark">
+                <div class="container">
+                    <div class="text-white text-center">
+                        <h1>SCENIC</h1>
+                    </div>
+                    <ul class="navbar-nav ml-auto">
+                        <li class="nav-item">
+                            <a class="nav-link text-white" href="/rentals/new">Create</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link text-white" href="/logout">logout</a>
+                        </li>
+                    </ul>
+                </div>
+            </nav>
         </div>
         <div class="main">
             {% for r in rental%}
             <div class="subs">
-                <div class="picframe"><img src="{{ r.image }}" alt="..."><h4>{{r.name}}</h4></div>
+                <a href="/show/{{r.id}}" class=" navbar-brand nav-link text-white">
+                <div class="picframe"><img src="{{ r.image }}" alt="...">
+                    <h4>{{r.name}}</h4>
+                </div>
+                </a>
                 <div class="iconbox">
                     <img src="{{ url_for('static', filename='img/mapmarker.png') }}" class="icon" alt="mapmarker"><p class="info"> {{r.city}}, {{r.state}}</p>
-                    <img src="{{ url_for('static', filename='img/book.png') }}" class="icon" alt="book"><p class="info">{{r.user}}</p>
+                    <img src="{{ url_for('static', filename='img/book.png') }}" class="icon" alt="book"><p class="info">{{r.name}}</p>
                     <img src="{{ url_for('static', filename='img/bed.png') }}" class="icon" alt="bed"><p class="info">{{r.beds}}</p>
                     <img src="{{ url_for('static', filename='img/dollarsign.png') }}" class="icon" alt="bed"><p class="info">{{r.rate}}</p>
+                    <!-- {{r.user_ids_who_favorited | length}}
+                        {% if session.user_id in r.user_ids_who_favorited %}
+                            <form action="/rentals/{{r.id}}/unfavorite" method="POST">
+                                <input name="id" type="hidden" value="{{r.id}}">
+                                <input name="user_id" type="hidden" value="{{session.user_id}}">
+                                <button type="submit" class="btn btn-danger"><img src="{{ url_for('static', filename='img/heart.png') }}" class="icon" alt="heart"></button>
+                            </form>
+                        {% else %}
+                            <form action="/rentals/{{r.id}}/favorite" method="POST">
+                                <input type="hidden" name="id" value="{{r.id}}">
+                                <input type="hidden" name="user_id" value="{{session.user_id}}">
+                                <button type="submit" class="btn btn-primary"><img src="{{ url_for('static', filename='img/heart.png') }}" class="icon" alt="heart"></button>
+                            </form>
+                        {%endif%} -->
                     <img src="{{ url_for('static', filename='img/heart.png') }}" class="icon" alt="heart"><p class="info"></p>
                 </div>
             </div>

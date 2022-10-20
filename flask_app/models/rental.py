@@ -36,50 +36,50 @@ class Rental:
 
     
     
-    # @classmethod
-    # def get_all(cls):
-    #     query ='''SELECT * FROM rentals JOIN users AS creators ON rentals.user_id = creators.id
-    #         LEFT JOIN favorited_rentals ON rentals.id = favorited_rentals.rental_id
-    #         LEFT JOIN users AS users_who_favorited ON favorited_rentals.user_id = users_who_favorited.id;'''
-    #     results =connectToMySQL(cls.db_name).query_db(query)
-    #     rentals=[]
-    #     for row in results:
-    #         new_rental = True
-    #         user_who_favorited_data = {
-    #             'id' : row['users_who_favorited.id'],
-    #             'first_name':row['users_who_favorited.first_name'],
-    #             'last_name':row['users_who_favorited.last_name'],
-    #             'email':row['users_who_favorited.email'],
-    #             'password':row['users_who_favorited.password'],
-    #             'created_at':row['users_who_favorited.created_at'],
-    #             'updated_at':row['users_who_favorited.updated_at']
-    #         }
-    #         number_of_rentals=len(rentals)
-    #         if number_of_rentals > 0:
-    #             last_rental=rentals[number_of_rentals-1]
-    #             if last_rental.id == row['id']:
-    #                 last_rental.user_ids_who_favorited.append(row['users_who_favorited.id'])
-    #                 last_rental.users_who_favorited.append(User(user_who_favorited_data))
-    #                 new_rental = False
+    @classmethod
+    def get_all(cls):
+        query ='''SELECT * FROM rentals JOIN users AS creators ON rentals.user_id = creators.id
+            LEFT JOIN favorited_rentals ON rentals.id = favorited_rentals.rental_id
+            LEFT JOIN users AS users_who_favorited ON favorited_rentals.user_id = users_who_favorited.id;'''
+        results =connectToMySQL(cls.db_name).query_db(query)
+        rentals=[]
+        for row in results:
+            new_rental = True
+            user_who_favorited_data = {
+                'id' : row['users_who_favorited.id'],
+                'first_name':row['users_who_favorited.first_name'],
+                'last_name':row['users_who_favorited.last_name'],
+                'email':row['users_who_favorited.email'],
+                'password':row['users_who_favorited.password'],
+                'created_at':row['users_who_favorited.created_at'],
+                'updated_at':row['users_who_favorited.updated_at']
+            }
+            number_of_rentals=len(rentals)
+            if number_of_rentals > 0:
+                last_rental=rentals[number_of_rentals-1]
+                if last_rental.id == row['id']:
+                    last_rental.user_ids_who_favorited.append(row['users_who_favorited.id'])
+                    last_rental.users_who_favorited.append(User(user_who_favorited_data))
+                    new_rental = False
 
-    #         if new_rental:
-    #             rental= cls(row)
-    #             user_data ={
-    #                 'id' : row['creators.id'],
-    #                 'first_name':row['first_name'],
-    #                 'last_name':row['last_name'],
-    #                 'email':row['email'],
-    #                 'password':row['password'],
-    #                 'created_at':row['creators.created_at'],
-    #                 'updated_at':row['creators.updated_at']
-    #             }
-    #             user = User(user_data)
-    #             rental.user = user
-    #             if row['users_who_favorited.id']:
-    #                 rental.user_ids_who_favorited.append(row['users_who_favorited.id'])
-    #                 rental.users_who_favorited.append(User(user_who_favorited_data))
-    #             rentals.append(rental)
-    #     return rentals
+            if new_rental:
+                rental= cls(row)
+                user_data ={
+                    'id' : row['creators.id'],
+                    'first_name':row['first_name'],
+                    'last_name':row['last_name'],
+                    'email':row['email'],
+                    'password':row['password'],
+                    'created_at':row['creators.created_at'],
+                    'updated_at':row['creators.updated_at']
+                }
+                user = User(user_data)
+                rental.user = user
+                if row['users_who_favorited.id']:
+                    rental.user_ids_who_favorited.append(row['users_who_favorited.id'])
+                    rental.users_who_favorited.append(User(user_who_favorited_data))
+                rentals.append(rental)
+        return rentals
 
 
     @classmethod
@@ -159,23 +159,23 @@ class Rental:
         if len(rental['description'])<3:
             is_valid = False
             flash("description must be greater then 2")
-        # if len(rental['city'])<3:
-        #     is_valid = False
-        #     flash("city must be greater then 2")
-        # # if len(rental['state'])<1:
-        # #     is_valid = False
-        # #     flash("state is required")
-        # # if len(rental['rate'])<3:
-        # #     is_valid = False
-        # #     flash("rate must be greater then 2")
-        # if len(rental['beds'])<0:
-        #     is_valid = False
-        #     flash("number of beds is required")
-        # if len(rental['amenity_1'])<3:
-        #     is_valid = False
-        #     flash("amenity_1 must be greater then 2")
-        # if len(rental['amenity_2'])<3:
-        #     is_valid = False
-        #     flash("amenity_2 must be greater then 2")
+        if len(rental['city'])<3:
+            is_valid = False
+            flash("city must be greater then 2")
+        if len(rental['state'])<1:
+            is_valid = False
+            flash("state is required")
+        if len(rental['rate'])<3:
+            is_valid = False
+            flash("rate must be greater then 2")
+        if len(rental['beds'])<0:
+            is_valid = False
+            flash("number of beds is required")
+        if len(rental['amenity_1'])<3:
+            is_valid = False
+            flash("amenity_1 must be greater then 2")
+        if len(rental['amenity_2'])<3:
+            is_valid = False
+            flash("amenity_2 must be greater then 2")
         return is_valid
     

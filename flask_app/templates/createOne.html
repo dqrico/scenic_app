@@ -8,10 +8,24 @@
     <title>Create</title>
 </head>
 <body>
-    <h1 class="text-center mb-4">Create your SCENIC rental!</h1>
+    <nav class="navbar navbar-expand-sm bg-secondary navbar-dark">
+        <div class="container">
+            <div class="text-white text-center">
+                <h1>Create Your SCENIC Rental!</h1>
+            </div>
+            <ul class="navbar-nav ml-auto">
+                <li class="nav-item">
+                    <a class="nav-link text-white" href="/dashboard">Home</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link text-white" href="/logout">logout</a>
+                </li>
+            </ul>
+        </div>
+    </nav>
     <div class="container text-center col-md-4">
         <div class="row">
-            <div class="form">
+            <div class="form mt-5">
 
                 <form action="/rentals/create" method="post">
                 
@@ -28,8 +42,8 @@
                     <input class="form-control" name="city"placeholder="City" type="text">
                     </div>
                     <div class="col-sm">
-                    <select class="form-select" name="state" type="text">
-                        <option selected>Select State</option>
+                    <select class="form-select mb-3" name="state" type="text">
+                        <option selected>State</option>
                         <option>AL</option>
                         <option>AK</option>
                         <option>AZ</option>
@@ -89,7 +103,7 @@
                 </div>
                     <div class="input-group mb-3">
                         <span class="input-group-text">$</span>
-                        <input type="text" name="rate"class="form-control">
+                        <input type="text" name="rate"class="form-control" placeholder="$ per night">
                         <span class="input-group-text">per night</span>
                     </div>
                 <div class="col-sm-4">
